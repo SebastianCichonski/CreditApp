@@ -4,12 +4,14 @@ import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import pl.javaskils.creditapp.core.model.*;
 import pl.javaskils.creditapp.core.scoring.EducationCalculator;
 import pl.javaskils.creditapp.core.scoring.IncomeCalculator;
@@ -19,6 +21,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
 
 //@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PersonScoringCalculatorTest {
 
     @InjectMocks

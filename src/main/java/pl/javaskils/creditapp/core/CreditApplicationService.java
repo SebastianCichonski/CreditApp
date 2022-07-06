@@ -34,8 +34,12 @@ public class CreditApplicationService {
            decision = new CreditApplicationDecision(DecisionType.CONTACT_REQUIRED, loanApplication, creditRating, scoring);
        }
        else if (scoring > 400 && creditRating >= loanApplication.getPurposeOfLoan().getAmount()){
-
-           decision = new CreditApplicationDecision(DecisionType.POSITIVE, loanApplication, creditRating, scoring);
+           if(loanApplication.getPurposeOfLoan().getAmount() >= Constants.MIN_LOAN_AMOUNT_MORTGAGE){
+               decision = new CreditApplicationDecision(DecisionType.NEGATIVE_REQUIREMENTS_NOT_MET,loanApplication,creditRating,scoring);
+           }
+           else {
+               decision = new CreditApplicationDecision(DecisionType.POSITIVE, loanApplication, creditRating, scoring);
+           }
        }
        else{
            decision = new CreditApplicationDecision(DecisionType.NEGATIVE_CREDIT_RATING, loanApplication, creditRating, scoring);
