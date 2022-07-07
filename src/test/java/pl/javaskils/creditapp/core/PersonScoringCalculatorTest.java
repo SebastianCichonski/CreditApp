@@ -20,7 +20,7 @@ import pl.javaskils.creditapp.core.scoring.MartialCalculator;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
 
-//@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 @ExtendWith(MockitoExtension.class)
 public class PersonScoringCalculatorTest {
 

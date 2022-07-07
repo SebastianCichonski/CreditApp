@@ -52,7 +52,7 @@ public class Person {
             return this;
         }
 
-        public Builder withFinanceData(FinanceData FinanceData){
+        public Builder withFinanceData(FinanceData financeData){
             this.financeData = financeData;
             return this;
         }
