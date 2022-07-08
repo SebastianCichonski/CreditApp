@@ -9,6 +9,8 @@ public class Constants {
     public static final String LAST_NAME_REGEX ;
     public static final String EMAIL_REGEX ;
     public static final String PHONE_REGEX ;
+    public static final String HOUSE_NUMBER_REGEX ;
+    public static final String ZIP_CODE_REGEX ;
     public static final double MIN_LOAN_AMOUNT_MORTGAGE ;
 
 
@@ -21,6 +23,8 @@ public class Constants {
         LAST_NAME_REGEX = "([A-ZĄ-Ź][a-zą-ź]{2,12})((\\-|\\s)[A-ZĄ-Ź][a-zą-ź]{2,12})?";
         EMAIL_REGEX = ".+\\@.+\\..+";
         PHONE_REGEX = "(\\+\\d{2})?\\d{9}";
+        HOUSE_NUMBER_REGEX = "(\\d)+(([A-Z]?)|([a-z]?))"; //do poprawy.
+        ZIP_CODE_REGEX = "\\d{2}-\\d{3}";
         MIN_LOAN_AMOUNT_MORTGAGE = 100000.00;
     }
 }

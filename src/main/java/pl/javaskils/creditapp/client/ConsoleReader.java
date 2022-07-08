@@ -16,6 +16,14 @@ public class ConsoleReader {
 
         String mothersMaidenName = getString("Enter your mother's maiden name: ", in, Constants.LAST_NAME_REGEX);
 
+        String street = getString("Enter address - street: ", in, Constants.LAST_NAME_REGEX);
+        String city = getString("Enter address - city: ", in, Constants.LAST_NAME_REGEX);
+        String houseNumber = getString("Enter address - house number: ", in, Constants.HOUSE_NUMBER_REGEX);
+        String zipCode = getString("Enter address - zip code: ", in, Constants.ZIP_CODE_REGEX);
+        String state = getString("Enter address - state: ", in, Constants.LAST_NAME_REGEX);
+
+        //TODO read correspondence address
+
         MartialStatus martialStatus = getMartialStatus(in);
 
         Education education = getEducation(in);
@@ -36,6 +44,8 @@ public class ConsoleReader {
 
         byte period = getPeriod(in);
 
+        Address homeAddress = new Address(street,city,houseNumber,zipCode,state);
+
         PersonalData pd = PersonalData.Builder
                 .create()
                 .withName(name)
@@ -46,7 +56,13 @@ public class ConsoleReader {
                 .withMartialStatus(martialStatus)
                 .build();
 
-        ContactData cd = new ContactData(email, phoneNumber, corespondenceAddress, homeAddress);
+        ContactData cd = ContactData.Builder.create()
+                .withEmail(email)
+                .withPhoneNumber(phoneNumber)
+                .withHomeAddress(homeAddress)
+                .withCorrespondenceAddress(correspondenceAddress)
+                .build();
+
         FinanceData fd = new FinanceData(sourceOfIncomesTab);
 
         Person person =  Person.Builder.create().withPersonalData(pd).withContactData(cd).withFinanceData(fd).build();
