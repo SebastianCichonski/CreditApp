@@ -46,7 +46,7 @@ public class ConsoleReader {
                 .withMartialStatus(martialStatus)
                 .build();
 
-        ContactData cd = new ContactData(email, phoneNumber);
+        ContactData cd = new ContactData(email, phoneNumber, corespondenceAddress, homeAddress);
         FinanceData fd = new FinanceData(sourceOfIncomesTab);
 
         Person person =  Person.Builder.create().withPersonalData(pd).withContactData(cd).withFinanceData(fd).build();
