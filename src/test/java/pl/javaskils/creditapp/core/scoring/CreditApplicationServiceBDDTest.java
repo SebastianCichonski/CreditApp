@@ -1,11 +1,15 @@
-package pl.javaskils.creditapp.core;
+package pl.javaskils.creditapp.core.scoring;
 
 import junit.framework.TestCase;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import pl.javaskils.creditapp.core.CreditApplicationDecision;
+import pl.javaskils.creditapp.core.CreditApplicationService;
+import pl.javaskils.creditapp.core.DecisionType;
+import pl.javaskils.creditapp.core.PersonScoringCalculator;
 import pl.javaskils.creditapp.core.model.*;
 import pl.javaskils.creditapp.core.scoring.EducationCalculator;
 import pl.javaskils.creditapp.core.scoring.IncomeCalculator;
@@ -31,7 +35,7 @@ public class CreditApplicationServiceBDDTest {
         CreditApplicationDecision decision = cut.getDecision(loanApplication);
 
         //then
-        assertEquals(DecisionType.NEGATIVE_REQUIREMENTS_NOT_MET, decision.getDecisionType());
+        Assert.assertEquals(DecisionType.NEGATIVE_REQUIREMENTS_NOT_MET, decision.getDecisionType());
         assertEquals(600, decision.getScoring());
         assertEquals(360000.00, decision.getCreditRate(), 0.01);
     }

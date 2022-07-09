@@ -16,13 +16,32 @@ public class ConsoleReader {
 
         String mothersMaidenName = getString("Enter your mother's maiden name: ", in, Constants.LAST_NAME_REGEX);
 
+
+        System.out.println("Enter home address.");
         String street = getString("Enter address - street: ", in, Constants.LAST_NAME_REGEX);
         String city = getString("Enter address - city: ", in, Constants.LAST_NAME_REGEX);
         String houseNumber = getString("Enter address - house number: ", in, Constants.HOUSE_NUMBER_REGEX);
         String zipCode = getString("Enter address - zip code: ", in, Constants.ZIP_CODE_REGEX);
         String state = getString("Enter address - state: ", in, Constants.LAST_NAME_REGEX);
 
-        //TODO read correspondence address
+        Address correspondenceAddress;
+        Address homeAddress = new Address(street,city,houseNumber,zipCode,state);
+        String answerCorrespAddr = getString("Do correspondence address is the same as home address? (YES | NO)", in, Constants.YES_NO_REGEX);
+
+        if(answerCorrespAddr.equals("yes") || answerCorrespAddr.equals("YES")){
+            correspondenceAddress = new Address(street,city,houseNumber,zipCode,state);
+        }
+        else {
+            System.out.println("Enter correspondence address.");
+            String streetC = getString("Enter address - street: ", in, Constants.LAST_NAME_REGEX);
+            String cityC = getString("Enter address - city: ", in, Constants.LAST_NAME_REGEX);
+            String houseNumberC = getString("Enter address - house number: ", in, Constants.HOUSE_NUMBER_REGEX);
+            String zipCodeC = getString("Enter address - zip code: ", in, Constants.ZIP_CODE_REGEX);
+            String stateC = getString("Enter address - state: ", in, Constants.LAST_NAME_REGEX);
+
+            correspondenceAddress = new Address(streetC,cityC,houseNumberC,zipCodeC,stateC);
+        }
+
 
         MartialStatus martialStatus = getMartialStatus(in);
 
@@ -43,8 +62,6 @@ public class ConsoleReader {
         double amount = getDouble(in);
 
         byte period = getPeriod(in);
-
-        Address homeAddress = new Address(street,city,houseNumber,zipCode,state);
 
         PersonalData pd = PersonalData.Builder
                 .create()

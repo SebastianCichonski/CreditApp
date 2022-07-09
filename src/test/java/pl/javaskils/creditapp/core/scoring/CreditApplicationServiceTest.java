@@ -1,4 +1,4 @@
-package pl.javaskils.creditapp.core;
+package pl.javaskils.creditapp.core.scoring;
 
 import junit.framework.TestCase;
 import org.junit.Assert;
@@ -10,6 +10,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
+import pl.javaskils.creditapp.core.CreditApplicationDecision;
+import pl.javaskils.creditapp.core.CreditApplicationService;
+import pl.javaskils.creditapp.core.DecisionType;
+import pl.javaskils.creditapp.core.PersonScoringCalculator;
 import pl.javaskils.creditapp.core.model.*;
 
 import static org.mockito.ArgumentMatchers.eq;

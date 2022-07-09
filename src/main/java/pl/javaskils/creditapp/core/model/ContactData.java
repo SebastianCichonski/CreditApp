@@ -15,6 +15,14 @@ public class ContactData {
         this.homeAddress = homeAddress;
     }
 
+    public Optional<Address> getCorrespondenceAddress() {
+        return correspondenceAddress;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -38,7 +46,7 @@ public class ContactData {
         public ContactData build(){
             Optional<Address> correspondenceAddress = this.homeAddress.equals(this.correspondenceAddress)?
                     Optional.empty() : Optional.ofNullable(this.correspondenceAddress);
-            return new ContactData(this.email,this.phoneNumber,correspondenceAddress,this.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          homeAddress);
+            return new ContactData(this.email,this.phoneNumber,correspondenceAddress,this.homeAddress);
         }
 
         public Builder withEmail(String email){

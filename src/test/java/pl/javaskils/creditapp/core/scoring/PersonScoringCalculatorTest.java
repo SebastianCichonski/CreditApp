@@ -1,4 +1,4 @@
-package pl.javaskils.creditapp.core;
+package pl.javaskils.creditapp.core.scoring;
 
 import junit.framework.TestCase;
 import org.junit.Assert;
@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
+import pl.javaskils.creditapp.core.PersonScoringCalculator;
 import pl.javaskils.creditapp.core.model.*;
 import pl.javaskils.creditapp.core.scoring.EducationCalculator;
 import pl.javaskils.creditapp.core.scoring.IncomeCalculator;
