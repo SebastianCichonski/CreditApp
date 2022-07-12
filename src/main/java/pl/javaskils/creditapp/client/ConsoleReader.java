@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ConsoleReader {
 
 
-    public LoanApplication readInputParameters() {
+    public CreditApplication readInputParameters() {
         Scanner in = new Scanner(System.in);
 
         String name = getString("Enter your name: ", in, Constants.NAME_REGEX);;
@@ -82,10 +82,10 @@ public class ConsoleReader {
 
         FinanceData fd = new FinanceData(sourceOfIncomesTab);
 
-        Person person =  Person.Builder.create().withPersonalData(pd).withContactData(cd).withFinanceData(fd).build();
+        NaturalPerson person =  NaturalPerson.Builder.create().withPersonalData(pd).withContactData(cd).withFinanceData(fd).build();
         PurposeOfLoan purposeOfLoan = new PurposeOfLoan(purposeOfLoanType, amount, period);
 
-        return new LoanApplication(person, purposeOfLoan);
+        return new CreditApplication(person, purposeOfLoan);
     }
 
     private byte getPeriod(Scanner in) {

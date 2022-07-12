@@ -15,7 +15,7 @@ public class ContactDataTest {
                 .withHomeAddress(new Address("Ziejkowa", "Gostynin", "29d", "09-500", "Mazowieckie"))
                 .withCorrespondenceAddress(new Address("Ziejkowa", "Gostynin", "29d", "09-500", "Mazowieckie"))
                 .build();
-
+        //Then
         assertTrue(cd.getCorrespondenceAddress().isEmpty());
     }
     @Test
@@ -25,7 +25,7 @@ public class ContactDataTest {
                 .withHomeAddress(new Address("Ziejkowa", "Gostynin", "29d", "09-500", "Mazowieckie"))
                 .withCorrespondenceAddress(new Address("Bierzewicka", "Gostynin", "29", "09-500", "Mazowieckie"))
                 .build();
-
+        //Then
         assertTrue(cd.getCorrespondenceAddress().isPresent());
     }
 

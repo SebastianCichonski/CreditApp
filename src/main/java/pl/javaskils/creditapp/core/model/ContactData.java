@@ -31,14 +31,14 @@ public class ContactData {
         return phoneNumber;
     }
 
+
     public static class Builder{
         private String email;
         private String phoneNumber;
         private Address correspondenceAddress;
         private Address homeAddress;
 
-        private Builder(){}
-
+         private Builder(){}
         public static Builder create(){
             return new Builder();
         }

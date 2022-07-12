@@ -5,11 +5,11 @@ import org.slf4j.LoggerFactory;
 
 public class Person {
     private static final Logger LOG = LoggerFactory.getLogger(FinanceData.class);
-    private PersonalData personalData;
-    private ContactData contactData;
-    private FinanceData financeData;
+    protected PersonalData personalData;
+    protected ContactData contactData;
+    protected FinanceData financeData;
 
-    private Person(PersonalData personalData, ContactData contactData, FinanceData financeData) {
+    protected Person(PersonalData personalData, ContactData contactData, FinanceData financeData) {
         this.personalData = personalData;
         this.contactData = contactData;
         this.financeData = financeData;

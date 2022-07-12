@@ -1,6 +1,5 @@
 package pl.javaskils.creditapp.core.scoring;
 
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,7 +30,7 @@ public class CreditApplicationServiceTest {
     @Test
     public void test_scoring_calculator_test_NEGATIVE_SCORING(){
         //given
-        LoanApplication loanApplication = LoanApplicationTestFactory.create(100000.00, PurposeOfLoanType.MORTGAGE, (byte) 25);
+        CreditApplication loanApplication = CreditApplicationTestFactory.create(100000.00, PurposeOfLoanType.MORTGAGE, (byte) 25);
         BDDMockito.given(calculatorMock.calculateScoring(eq(loanApplication.getPerson()))).willReturn(100);
 
         //when

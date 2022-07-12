@@ -1,7 +1,7 @@
 package pl.javaskils.creditapp.core.model;
 
 public class PersonTestFactory {
-    public static Person create(int numOfDependants, Education education, MartialStatus martialStatus){
+    public static NaturalPerson create(int numOfDependants, Education education, MartialStatus martialStatus){
         PersonalData personalData = PersonalData.Builder
                 .create()
                 .withName("test")
@@ -11,7 +11,7 @@ public class PersonTestFactory {
                 .withEducation(education)
                 .withMartialStatus(martialStatus)
                 .build();
-        return  Person.Builder
+        return  NaturalPerson.Builder
                 .create()
                 .withPersonalData(personalData)
                 .withContactData(null)
@@ -29,7 +29,7 @@ public class PersonTestFactory {
                 .withEducation(education)
                 .withMartialStatus(MartialStatus.SINGLE)
                 .build();
-        return Person.Builder
+        return NaturalPerson.Builder
                 .create()
                 .withPersonalData(personalData)
                 .withContactData(null)
@@ -47,7 +47,7 @@ public class PersonTestFactory {
                 .withEducation(Education.MIDDLE)
                 .withMartialStatus(MartialStatus.SINGLE)
                 .build();
-        return Person.Builder
+        return NaturalPerson.Builder
                 .create()
                 .withPersonalData(personalData)
                 .withContactData(null)
@@ -55,7 +55,7 @@ public class PersonTestFactory {
                 .build();
     }
 
-    public static Person create(double totalMonthlyIncomInPln, int numOfDependents, Education education, MartialStatus martialStatus){
+    public static NaturalPerson create(double totalMonthlyIncomInPln, int numOfDependents, Education education, MartialStatus martialStatus){
         PersonalData personalData = PersonalData.Builder
                 .create()
                 .withName("test")
@@ -65,7 +65,7 @@ public class PersonTestFactory {
                 .withEducation(education)
                 .withMartialStatus(martialStatus)
                 .build();
-        return Person.Builder
+        return NaturalPerson.Builder
                 .create()
                 .withPersonalData(personalData)
                 .withContactData(null)
@@ -83,7 +83,7 @@ public class PersonTestFactory {
                 .withEducation(Education.MIDDLE)
                 .withMartialStatus(martialStatus)
                 .build();
-        return Person.Builder
+        return NaturalPerson.Builder
                 .create()
                 .withPersonalData(personalData)
                 .withContactData(null)
@@ -101,7 +101,7 @@ public class PersonTestFactory {
                 .withEducation(Education.MIDDLE)
                 .withMartialStatus(MartialStatus.SINGLE)
                 .build();
-        return Person.Builder
+        return NaturalPerson.Builder
                 .create()
                 .withPersonalData(personalData)
                 .withContactData(null)

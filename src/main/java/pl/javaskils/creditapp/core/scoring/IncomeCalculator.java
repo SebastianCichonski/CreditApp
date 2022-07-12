@@ -2,7 +2,6 @@ package pl.javaskils.creditapp.core.scoring;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.javaskils.creditapp.core.model.LoanApplication;
 import pl.javaskils.creditapp.core.model.Person;
 
 public class IncomeCalculator {

@@ -1,14 +1,14 @@
 package pl.javaskils.creditapp.core;
 
-import pl.javaskils.creditapp.core.model.LoanApplication;
+import pl.javaskils.creditapp.core.model.CreditApplication;
 
 public class CreditApplicationDecision {
     private final DecisionType decisionType;
-    private final LoanApplication loanApplication;
+    private final CreditApplication loanApplication;
     private  final Double creditRate;
     private final int scoring;
 
-    public CreditApplicationDecision(DecisionType decisionType, LoanApplication loanApplication, Double creditRate, int scoring) {
+    public CreditApplicationDecision(DecisionType decisionType, CreditApplication loanApplication, Double creditRate, int scoring) {
         this.decisionType = decisionType;
         this.loanApplication = loanApplication;
         this.creditRate = creditRate;

@@ -1,19 +1,12 @@
 package pl.javaskils.creditapp.core.scoring;
 
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import pl.javaskils.creditapp.core.CreditApplicationDecision;
 import pl.javaskils.creditapp.core.CreditApplicationService;
 import pl.javaskils.creditapp.core.DecisionType;
 import pl.javaskils.creditapp.core.PersonScoringCalculator;
 import pl.javaskils.creditapp.core.model.*;
-import pl.javaskils.creditapp.core.scoring.EducationCalculator;
-import pl.javaskils.creditapp.core.scoring.IncomeCalculator;
-import pl.javaskils.creditapp.core.scoring.MartialCalculator;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
@@ -28,11 +21,11 @@ public class CreditApplicationServiceBDDTest {
     @Test
     public void test_scoring_calculator_test_NEGATIVE_SCORING(){
         //given
-        //  LoanApplication loanApplication = LoanApplicationTestFactory.create(100000.00, PurposeOfLoanType.MORTGAGE, (byte) 25);
-        LoanApplication loanApplication = LoanApplicationTestFactory.create();
+        //  LoanApplication creditApplication = LoanApplicationTestFactory.create(100000.00, PurposeOfLoanType.MORTGAGE, (byte) 25);
+        CreditApplication creditApplication = CreditApplicationTestFactory.create();
 
         //when
-        CreditApplicationDecision decision = cut.getDecision(loanApplication);
+        CreditApplicationDecision decision = cut.getDecision(creditApplication);
 
         //then
         Assert.assertEquals(DecisionType.NEGATIVE_REQUIREMENTS_NOT_MET, decision.getDecisionType());
