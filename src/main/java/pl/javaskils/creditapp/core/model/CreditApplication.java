@@ -14,7 +14,7 @@ public class CreditApplication {
         this.selfEmployedOptional = Optional.empty();
     }
 
-public CreditApplication(SelfEmployed selfEmployed, PurposeOfLoan purposeOfLoan) {
+    public CreditApplication(SelfEmployed selfEmployed, PurposeOfLoan purposeOfLoan) {
         this.purposeOfLoan = purposeOfLoan;
         this.naturalPersonOptional = Optional.empty();
         this.selfEmployedOptional = Optional.of(selfEmployed);

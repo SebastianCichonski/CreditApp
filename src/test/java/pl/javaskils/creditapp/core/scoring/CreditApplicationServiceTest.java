@@ -19,8 +19,9 @@ import pl.javaskils.creditapp.core.model.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 
-//@RunWith(MockitoJUnitRunner.class)
+
 @ExtendWith(MockitoExtension.class)
+@RunWith(MockitoJUnitRunner.class)
 public class CreditApplicationServiceTest {
 
     @InjectMocks
