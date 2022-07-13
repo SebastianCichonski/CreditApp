@@ -2,6 +2,7 @@ package pl.javaskils.creditapp.core.scoring;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
@@ -15,9 +16,10 @@ import pl.javaskils.creditapp.core.DecisionType;
 import pl.javaskils.creditapp.core.PersonScoringCalculator;
 import pl.javaskils.creditapp.core.model.*;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 @ExtendWith(MockitoExtension.class)
 public class CreditApplicationServiceTest {
 
@@ -25,16 +27,24 @@ public class CreditApplicationServiceTest {
     private CreditApplicationService cut;
 
     @Mock
-    private PersonScoringCalculator calculatorMock;
+    private PersonScoringCalculator personScoringCalculatorMock;
+
+    @Mock
+    private PersonScoringCalculatorFactory personScoringCalculatorFactoryMock;
+
+    @BeforeEach
+    public void init() {
+        BDDMockito.given(personScoringCalculatorFactoryMock.getCalculator(any(Person.class))).willReturn(personScoringCalculatorMock);
+    }
 
     @Test
     public void test_scoring_calculator_test_NEGATIVE_SCORING(){
         //given
-        CreditApplication loanApplication = CreditApplicationTestFactory.create(100000.00, PurposeOfLoanType.MORTGAGE, (byte) 25);
-        BDDMockito.given(calculatorMock.calculateScoring(eq(loanApplication.getPerson()))).willReturn(100);
+        CreditApplication creditApplication = CreditApplicationTestFactory.create(100000.00, PurposeOfLoanType.MORTGAGE, (byte) 25);
+        BDDMockito.given(personScoringCalculatorMock.calculateScoring(eq(creditApplication.getPerson()))).willReturn(100);
 
         //when
-        CreditApplicationDecision decision = cut.getDecision(loanApplication);
+        CreditApplicationDecision decision = cut.getDecision(creditApplication);
 
         //then
         Assert.assertEquals(DecisionType.NEGATIVE_SCORING, decision.getDecisionType());

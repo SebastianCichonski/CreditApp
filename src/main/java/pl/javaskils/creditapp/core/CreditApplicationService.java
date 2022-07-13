@@ -5,16 +5,18 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import pl.javaskils.creditapp.core.model.CreditApplication;
 import pl.javaskils.creditapp.core.model.Person;
+import pl.javaskils.creditapp.core.scoring.PersonScoringCalculatorFactory;
 
 import java.util.UUID;
 
 public class CreditApplicationService {
     private static final Logger LOG = LoggerFactory.getLogger(CreditApplicationService.class);
 
-    private final PersonScoringCalculator calculator;
+    private final PersonScoringCalculatorFactory personScoringCalculatorFactory;
+
     //Konstruktor dla testów.
-    public CreditApplicationService(PersonScoringCalculator calculator) {
-        this.calculator = calculator;
+    public CreditApplicationService(PersonScoringCalculatorFactory personScoringCalculatorFactory) {
+        this.personScoringCalculatorFactory = personScoringCalculatorFactory;
     }
 
     public CreditApplicationDecision getDecision(CreditApplication creditApplication){
@@ -23,7 +25,9 @@ public class CreditApplicationService {
         MDC.put("id",id);
 
        Person person = creditApplication.getPerson();
-       int scoring = calculator.calculateScoring(person);
+
+       int scoring = personScoringCalculatorFactory.getCalculator(person).calculateScoring(person);
+
        double creditRating = CreditRatingCalculator.calculateCreditRating(creditApplication);
 
        CreditApplicationDecision decision;

@@ -55,7 +55,26 @@ public class PersonTestFactory {
                 .build();
     }
 
-    public static NaturalPerson create(double totalMonthlyIncomInPln, int numOfDependents, Education education, MartialStatus martialStatus){
+    public static SelfEmployed create(int yearsSinceFounded, double totalMonthlyIncomInPln, int numOfDependents, Education education, MartialStatus martialStatus){
+        PersonalData personalData = PersonalData.Builder
+                .create()
+                .withName("test")
+                .withLastName("test")
+                .withMothersMaidenName("test")
+                .withNumOfFamilyDependants(numOfDependents)
+                .withEducation(education)
+                .withMartialStatus(martialStatus)
+                .build();
+        return SelfEmployed.Builder
+                .create()
+                .withYearsSinceFounded(yearsSinceFounded)
+                .withPersonalData(personalData)
+                .withContactData(null)
+                .withFinanceData(new FinanceData(new SourceOfIncome(IncomeType.SELF_EMPLOYMENT, totalMonthlyIncomInPln)))
+                .build();
+    }
+
+    public static NaturalPerson create( double totalMonthlyIncomInPln, int numOfDependents, Education education, MartialStatus martialStatus){
         PersonalData personalData = PersonalData.Builder
                 .create()
                 .withName("test")
