@@ -1,12 +1,9 @@
 package pl.javaskils.creditapp.core.scoring;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.suite.api.SelectFiles;
 import pl.javaskils.creditapp.core.CreditApplicationDecision;
 import pl.javaskils.creditapp.core.CreditApplicationService;
 import pl.javaskils.creditapp.core.DecisionType;
-import pl.javaskils.creditapp.core.PersonScoringCalculator;
 import pl.javaskils.creditapp.core.model.*;
 
 import static org.junit.Assert.assertEquals;
@@ -15,13 +12,14 @@ import static org.mockito.ArgumentMatchers.eq;
 
 public class CreditApplicationServiceBDDTest {
 
-    private NaturalPersonScoringCalculator naturalPersonScoringCalculator =
-            new NaturalPersonScoringCalculator(new IncomeCalculator(), new MartialCalculator(), new EducationCalculator(), new SourceOfIncomeCalculator());
+    private EducationCalculator educationCalculator = new EducationCalculator();
+    private MartialCalculator martialCalculator = new MartialCalculator();
+    private IncomeCalculator incomeCalculator = new IncomeCalculator();
+    private SourceOfIncomeCalculator sourceOfIncomeCalculator = new SourceOfIncomeCalculator();
     private SelfEmployedScoringCalculator selfEmployedScoringCalculator =
-            new SelfEmployedScoringCalculator(new IncomeCalculator(), new MartialCalculator(), new EducationCalculator(), new SourceOfIncomeCalculator());
-
+            new SelfEmployedScoringCalculator();
     private PersonScoringCalculatorFactory calculator =
-            new PersonScoringCalculatorFactory(naturalPersonScoringCalculator,selfEmployedScoringCalculator);
+            new PersonScoringCalculatorFactory(selfEmployedScoringCalculator,educationCalculator,martialCalculator,incomeCalculator,sourceOfIncomeCalculator);
 
     private CreditApplicationService cut = new CreditApplicationService(calculator);
 
@@ -64,5 +62,18 @@ public class CreditApplicationServiceBDDTest {
         //then
         assertEquals(DecisionType.CONTACT_REQUIRED, decision.getDecisionType());
         assertEquals(400, decision.getScoring());
+    }
+
+    @Test
+    public void test_scoring_calculator_test_when_years_since_founded_more_2_NEGATIVE_SCORING_nevermind() {
+        //given
+        CreditApplication creditApplication = CreditApplicationTestFactory.create(2);
+
+        //when
+        CreditApplicationDecision decision = cut.getDecision(creditApplication);
+
+        //then
+        assertEquals(DecisionType.CONTACT_REQUIRED, decision.getDecisionType());
+        assertEquals(100, sourceOfIncomeCalculator.calculate(creditApplication.getPerson()));
     }
 }

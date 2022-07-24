@@ -26,7 +26,7 @@ public class CreditApplicationService {
 
        Person person = creditApplication.getPerson();
 
-       int scoring = personScoringCalculatorFactory.getCalculator(person).calculateScoring(person);
+       int scoring = personScoringCalculatorFactory.getCalculator(person).calculate(person);
 
        double creditRating = CreditRatingCalculator.calculateCreditRating(creditApplication);
 

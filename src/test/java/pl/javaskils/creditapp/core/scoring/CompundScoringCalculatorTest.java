@@ -1,7 +1,5 @@
 package pl.javaskils.creditapp.core.scoring;
 
-import junit.framework.TestCase;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,55 +8,42 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pl.javaskils.creditapp.core.PersonScoringCalculator;
 import pl.javaskils.creditapp.core.model.*;
-import pl.javaskils.creditapp.core.scoring.EducationCalculator;
-import pl.javaskils.creditapp.core.scoring.IncomeCalculator;
-import pl.javaskils.creditapp.core.scoring.MartialCalculator;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
 
 @RunWith(MockitoJUnitRunner.class)
 @ExtendWith(MockitoExtension.class)
-public class PersonScoringCalculatorTest {
+public class CompundScoringCalculatorTest {
+    private PersonCalculator personCalculator1Mock = Mockito.mock(PersonCalculator.class);
+    private PersonCalculator personCalculator2Mock = Mockito.mock(PersonCalculator.class);
+    private PersonCalculator personCalculator3Mock = Mockito.mock(PersonCalculator.class);
+    private PersonCalculator personCalculator4Mock = Mockito.mock(PersonCalculator.class);
 
-    @InjectMocks
-    private NaturalPersonScoringCalculator cut1 ;
-
-    @InjectMocks
-    private SelfEmployedScoringCalculator cut2;
-
-    @Mock
-    private IncomeCalculator incomeCalculatorMock ;
-    @Mock
-    private MartialCalculator martialCalculatorMock ;
-    @Mock
-    private EducationCalculator educationCalculatorMock ;
-    @Mock
-    private SourceOfIncomeCalculator sourceOfIncomeCalculatorMock;
+    private CompundScoringCalculator cut1 =
+            new CompundScoringCalculator(personCalculator1Mock,personCalculator2Mock,personCalculator3Mock,personCalculator4Mock);
 
     @Test
     @DisplayName("test1")
     public void test_calculateScoring(){
         //given
         Person person = PersonTestFactory.create(2, Education.PRIMARY, MartialStatus.MARRIED);
-        BDDMockito.given(incomeCalculatorMock.calculate(eq(person))).willReturn(50);
-        BDDMockito.given(martialCalculatorMock.calculate(eq(person.getPersonalData()))).willReturn(200);
-        BDDMockito.given(educationCalculatorMock.calculate(eq(person.getPersonalData()))).willReturn(100);
-        BDDMockito.given(sourceOfIncomeCalculatorMock.calculate(eq(person))).willReturn(0);
+        BDDMockito.given(personCalculator1Mock.calculate(eq(person))).willReturn(50);
+        BDDMockito.given(personCalculator2Mock.calculate(eq(person))).willReturn(200);
+        BDDMockito.given(personCalculator3Mock.calculate(eq(person))).willReturn(100);
+        BDDMockito.given(personCalculator4Mock.calculate(eq(person))).willReturn(0);
 
         //when
-        int scoring1 = cut1.calculateScoring(person);
+        int scoring1 = cut1.calculate(person);
         //then
         assertEquals(350, scoring1);
 
 
         //when
-        int scoring2 = cut2.calculateScoring(person);
+        int scoring2 = cut1.calculate(person);
         //then
         assertEquals(350, scoring2);
     }

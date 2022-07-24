@@ -21,42 +21,42 @@ public class EducationCalculatorTest {
     @Test
     public void educationCalculatorTest_PRIMARY() {
         Person person = PersonTestFactory.create(Education.PRIMARY);
-        int educationPoints = cut.calculate(person.getPersonalData());
+        int educationPoints = cut.calculate(person);
         assertEquals(-100, educationPoints);
     }
 
     @Test
     public void educationCalculatorTest_NONE() {
         Person person = PersonTestFactory.create(Education.NONE);
-        int educationPoints = cut.calculate(person.getPersonalData());
+        int educationPoints = cut.calculate(person);
         assertEquals(-200, educationPoints);
     }
 
     @Test
     public void educationCalculatorTest_MIDDLE() {
         Person person = PersonTestFactory.create(Education.MIDDLE);
-        int educationPoints = cut.calculate(person.getPersonalData());
+        int educationPoints = cut.calculate(person);
         assertEquals(0, educationPoints);
     }
 
     @Test
     public void educationCalculatorTest_TERTIARY() {
         Person person = PersonTestFactory.create(Education.TERTIARY);
-        int educationPoints = cut.calculate(person.getPersonalData());
+        int educationPoints = cut.calculate(person);
         assertEquals(100, educationPoints);
     }
 
     @Test
     public void educationCalculatorTest_SECONDARY() {
         Person person = PersonTestFactory.create(Education.SECONDARY);
-        int educationPoints = cut.calculate(person.getPersonalData());
+        int educationPoints = cut.calculate(person);
         assertEquals(0, educationPoints);
     }
 
     @Test
     public void educationCalculatorTest_POST_SECONDARY() {
         Person person = PersonTestFactory.create(Education.POST_SECONDARY);
-        int educationPoints = cut.calculate(person.getPersonalData());
+        int educationPoints = cut.calculate(person);
         assertEquals(0, educationPoints);
     }
 

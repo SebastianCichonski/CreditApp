@@ -117,8 +117,8 @@ public class PersonTestFactory {
                 .withLastName("test")
                 .withMothersMaidenName("test")
                 .withNumOfFamilyDependants(numOfDependants)
-                .withEducation(Education.MIDDLE)
-                .withMartialStatus(MartialStatus.SINGLE)
+                .withEducation(Education.TERTIARY)
+                .withMartialStatus(MartialStatus.SEPARATED)
                 .build();
         return NaturalPerson.Builder
                 .create()

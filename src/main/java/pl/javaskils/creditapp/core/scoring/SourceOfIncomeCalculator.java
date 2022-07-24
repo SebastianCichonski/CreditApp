@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.javaskils.creditapp.core.model.Person;
 
-public class SourceOfIncomeCalculator {
+public class SourceOfIncomeCalculator implements PersonCalculator{
     private static final Logger LOG = LoggerFactory.getLogger(SourceOfIncomeCalculator.class);
 
     public int calculate(Person person){

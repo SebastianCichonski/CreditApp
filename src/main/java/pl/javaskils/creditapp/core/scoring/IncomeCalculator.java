@@ -4,10 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.javaskils.creditapp.core.model.Person;
 
-public class IncomeCalculator {
+public class IncomeCalculator implements PersonCalculator{
 
     private static final Logger LOG = LoggerFactory.getLogger(IncomeCalculator.class);
-
+    @Override
     public int calculate(Person person){
         double incomPerFamilyMember = person.sumOfIncome() / person.getPersonalData().getNumOfFamilyDependants();
         int pointsOfIncome = (int) ( incomPerFamilyMember / 1000) * 100;
