@@ -1,6 +1,11 @@
 package pl.javaskils.creditapp.core.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.javaskils.creditapp.core.scoring.IncomeCalculator;
+
 public class PurposeOfLoan {
+    private static final Logger LOG = LoggerFactory.getLogger(PurposeOfLoan.class);
 
     private final PurposeOfLoanType purposeOfLoanType;
     private final double amount;
@@ -10,6 +15,7 @@ public class PurposeOfLoan {
         this.purposeOfLoanType = purposeOfLoanType;
         this.amount = amount;
         this.period = period;
+        LOG.info("\nPurpose of loan: " + purposeOfLoanType + "\n Amount: " + amount + "\n Period: " + period);
     }
 
     public PurposeOfLoanType getType() {

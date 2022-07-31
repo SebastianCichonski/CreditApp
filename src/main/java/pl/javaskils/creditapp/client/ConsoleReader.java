@@ -4,10 +4,10 @@ import pl.javaskils.creditapp.core.Constants;
 import pl.javaskils.creditapp.core.model.*;
 import java.util.Scanner;
 
-public class ConsoleReader {
+public class ConsoleReader implements CreditApplicationReader{
 
-
-    public CreditApplication readInputParameters() {
+    @Override
+    public CreditApplication read() {
         Scanner in = new Scanner(System.in);
 
         String name = getString("Enter your name: ", in, Constants.NAME_REGEX);;

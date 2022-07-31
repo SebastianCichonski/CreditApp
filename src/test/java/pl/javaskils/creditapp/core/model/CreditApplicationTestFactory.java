@@ -33,9 +33,9 @@ public class CreditApplicationTestFactory {
     }
 
     public static CreditApplication create(int numOfDependants){
-        NaturalPerson person =
-                (NaturalPerson) PersonTestFactory.create(numOfDependants, new SourceOfIncome(IncomeType.SELF_EMPLOYMENT, 10_000),new SourceOfIncome(IncomeType.EMPLOYMENT_CONTRACT, 12_000));
-        PurposeOfLoan purposeOfLoan = new PurposeOfLoan(PurposeOfLoanType.MORTGAGE, 50_000.00,(byte) 30);
+        SelfEmployed person =
+                (SelfEmployed) PersonTestFactory.create(numOfDependants, new SourceOfIncome(IncomeType.SELF_EMPLOYMENT, 10_000),new SourceOfIncome(IncomeType.EMPLOYMENT_CONTRACT, 12_000));
+        PurposeOfLoan purposeOfLoan = new PurposeOfLoan(PurposeOfLoanType.MORTGAGE, 100_000.00,(byte) 30);
         CreditApplication creditApplication = new CreditApplication(person,purposeOfLoan);
 
         return creditApplication;

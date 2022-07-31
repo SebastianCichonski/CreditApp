@@ -120,7 +120,7 @@ public class PersonTestFactory {
                 .withEducation(Education.TERTIARY)
                 .withMartialStatus(MartialStatus.SEPARATED)
                 .build();
-        return NaturalPerson.Builder
+        return SelfEmployed.Builder
                 .create()
                 .withPersonalData(personalData)
                 .withContactData(null)

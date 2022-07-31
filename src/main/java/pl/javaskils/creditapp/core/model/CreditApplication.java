@@ -3,29 +3,15 @@ package pl.javaskils.creditapp.core.model;
 import java.util.Optional;
 
 public class CreditApplication {
-    private final Optional<NaturalPerson> naturalPersonOptional;
-    private final Optional<SelfEmployed> selfEmployedOptional;
+    private final Person person;
     private final PurposeOfLoan purposeOfLoan;
 
-
-    public CreditApplication(NaturalPerson naturalPerson, PurposeOfLoan purposeOfLoan) {
+    public CreditApplication(Person person, PurposeOfLoan purposeOfLoan) {
         this.purposeOfLoan = purposeOfLoan;
-        this.naturalPersonOptional = Optional.of(naturalPerson);
-        this.selfEmployedOptional = Optional.empty();
+        this.person = person;
     }
 
-    public CreditApplication(SelfEmployed selfEmployed, PurposeOfLoan purposeOfLoan) {
-        this.purposeOfLoan = purposeOfLoan;
-        this.naturalPersonOptional = Optional.empty();
-        this.selfEmployedOptional = Optional.of(selfEmployed);
-    }
-
-    public Optional<NaturalPerson> getNaturalPersonOptional() {
-        return naturalPersonOptional;
-    }
-
-    public Optional<SelfEmployed> getSelfEmployedOptional() {
-        return selfEmployedOptional;
+    public CreditApplication(NaturalPerson build) {
     }
 
     public PurposeOfLoan getPurposeOfLoan() {
@@ -33,9 +19,6 @@ public class CreditApplication {
     }
 
     public Person getPerson(){
-        if(naturalPersonOptional.isPresent()) {
-            return naturalPersonOptional.get();
-        }
-        return selfEmployedOptional.get();
+        return person;
     }
 }

@@ -73,7 +73,7 @@ public class CreditApplicationServiceBDDTest {
         CreditApplicationDecision decision = cut.getDecision(creditApplication);
 
         //then
-        assertEquals(DecisionType.CONTACT_REQUIRED, decision.getDecisionType());
+        assertEquals(DecisionType.POSITIVE, decision.getDecisionType());
         assertEquals(100, sourceOfIncomeCalculator.calculate(creditApplication.getPerson()));
     }
 }
