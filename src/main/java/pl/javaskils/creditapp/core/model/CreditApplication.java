@@ -11,9 +11,6 @@ public class CreditApplication {
         this.person = person;
     }
 
-    public CreditApplication(NaturalPerson build) {
-    }
-
     public PurposeOfLoan getPurposeOfLoan() {
         return purposeOfLoan;
     }

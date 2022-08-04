@@ -6,6 +6,10 @@ import pl.javaskils.creditapp.client.DummyCreditApplicationReader;
 import pl.javaskils.creditapp.core.CreditApplicationService;
 import pl.javaskils.creditapp.core.model.CreditApplication;
 import pl.javaskils.creditapp.core.scoring.*;
+import pl.javaskils.creditapp.core.validation.CreditApplicationValidator;
+import pl.javaskils.creditapp.core.validation.PersonValidator;
+import pl.javaskils.creditapp.core.validation.PersonalDataValidator;
+import pl.javaskils.creditapp.core.validation.PurposeOfLoanValidator;
 
 public class Main {
     public static void main(String[] args){
@@ -14,13 +18,14 @@ public class Main {
         MartialCalculator martialCalculator = new MartialCalculator();
         IncomeCalculator incomeCalculator = new IncomeCalculator();
         SourceOfIncomeCalculator sourceOfIncomeCalculator = new SourceOfIncomeCalculator();
+        CreditApplicationValidator creditApplicationValidator = new CreditApplicationValidator(new PersonValidator(new PersonalDataValidator()),new PurposeOfLoanValidator());
         SelfEmployedScoringCalculator selfEmployedScoringCalculator =
                 new SelfEmployedScoringCalculator();
         PersonScoringCalculatorFactory personScoringCalculatorFactory =
                 new PersonScoringCalculatorFactory(selfEmployedScoringCalculator,educationCalculator,martialCalculator,incomeCalculator,sourceOfIncomeCalculator);
 
         CreditApplication creditApplication = reader.read();
-        CreditApplicationService service = new CreditApplicationService(personScoringCalculatorFactory);
+        CreditApplicationService service = new CreditApplicationService(personScoringCalculatorFactory,creditApplicationValidator);
         System.out.println(service.getDecision(creditApplication).getDecision());
     }
 

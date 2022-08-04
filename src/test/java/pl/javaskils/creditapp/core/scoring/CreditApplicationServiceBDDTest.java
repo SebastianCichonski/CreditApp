@@ -5,6 +5,10 @@ import pl.javaskils.creditapp.core.CreditApplicationDecision;
 import pl.javaskils.creditapp.core.CreditApplicationService;
 import pl.javaskils.creditapp.core.DecisionType;
 import pl.javaskils.creditapp.core.model.*;
+import pl.javaskils.creditapp.core.validation.CreditApplicationValidator;
+import pl.javaskils.creditapp.core.validation.PersonValidator;
+import pl.javaskils.creditapp.core.validation.PersonalDataValidator;
+import pl.javaskils.creditapp.core.validation.PurposeOfLoanValidator;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
@@ -16,12 +20,13 @@ public class CreditApplicationServiceBDDTest {
     private MartialCalculator martialCalculator = new MartialCalculator();
     private IncomeCalculator incomeCalculator = new IncomeCalculator();
     private SourceOfIncomeCalculator sourceOfIncomeCalculator = new SourceOfIncomeCalculator();
+    private CreditApplicationValidator creditApplicationValidator = new CreditApplicationValidator(new PersonValidator(new PersonalDataValidator()),new PurposeOfLoanValidator());
     private SelfEmployedScoringCalculator selfEmployedScoringCalculator =
             new SelfEmployedScoringCalculator();
     private PersonScoringCalculatorFactory calculator =
             new PersonScoringCalculatorFactory(selfEmployedScoringCalculator,educationCalculator,martialCalculator,incomeCalculator,sourceOfIncomeCalculator);
 
-    private CreditApplicationService cut = new CreditApplicationService(calculator);
+    private CreditApplicationService cut = new CreditApplicationService(calculator, creditApplicationValidator);
 
     @Test
     public void test_scoring_calculator_test_NEGATIVE_SCORING(){
