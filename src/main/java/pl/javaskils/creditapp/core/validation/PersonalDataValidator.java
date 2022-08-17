@@ -24,7 +24,5 @@ public class PersonalDataValidator implements Validator{
         ValidationUtils.validateNotNull("education", personalData.getEducation());
         ValidationUtils.validateNotNull("maritalStatus", personalData.getMartialStatus());
 
-        ValidationUtils.validateMinValue("numOfDependants", 0, personalData.getNumOfFamilyDependants());
-
     }
 }

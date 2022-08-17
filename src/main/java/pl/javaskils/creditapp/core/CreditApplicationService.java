@@ -23,8 +23,7 @@ public class CreditApplicationService {
     }
 
     public CreditApplicationDecision getDecision(CreditApplication creditApplication){
-        String id = UUID.randomUUID().toString();
-        LOG.info("Application ID is: " + id);
+        String id = creditApplication.getId().toString();
         MDC.put("id",id);
 
         try {

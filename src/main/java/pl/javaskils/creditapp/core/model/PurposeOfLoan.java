@@ -15,7 +15,7 @@ public class PurposeOfLoan {
         this.purposeOfLoanType = purposeOfLoanType;
         this.amount = amount;
         this.period = period;
-        LOG.info("\nPurpose of loan: " + purposeOfLoanType + "\n Amount: " + amount + "\n Period: " + period);
+        LOG.info("Purpose of loan: " + purposeOfLoanType + " Amount: " + amount + " Period: " + period);
     }
 
     public PurposeOfLoanType getType() {

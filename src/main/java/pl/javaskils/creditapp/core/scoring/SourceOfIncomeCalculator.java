@@ -9,7 +9,7 @@ public class SourceOfIncomeCalculator implements PersonCalculator{
 
     public int calculate(Person person){
         int sourceOfIncomeExtraPoints;
-        if(person.getFinanceData().getSourceOfIncomes().length>1){
+        if(person.getFinanceData().getSourceOfIncomes().size() >1){
             sourceOfIncomeExtraPoints = 100;
         }
         else sourceOfIncomeExtraPoints = 0;

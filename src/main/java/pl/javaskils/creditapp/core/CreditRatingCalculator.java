@@ -19,7 +19,7 @@ public class CreditRatingCalculator {
                 break;
         }
 
-        double creditRating = (creditApplication.getPerson().sumOfIncome() / creditApplication.getPerson().getPersonalData().getNumOfFamilyDependants())
+        double creditRating = (creditApplication.getPerson().sumOfIncome() / creditApplication.getPerson().getNumOfFamilyDependants())
                 * 12 * creditApplication.getPurposeOfLoan().getPeriod() * lonRate;
 
         LOG.info("Calculated rating: " + creditRating);

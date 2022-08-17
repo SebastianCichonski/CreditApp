@@ -1,12 +1,14 @@
 package pl.javaskils.creditapp.core.model;
 
+import java.util.List;
+
 public class SelfEmployed extends Person{
     private final String nip;
     private final String regon;
     private final int yearsSinceFounded;
 
-    public SelfEmployed(String nip, String regon, PersonalData personalData, ContactData contactData, FinanceData financeData, int yearsSinceFounded) {
-        super(personalData, contactData, financeData);
+    public SelfEmployed(String nip, String regon, PersonalData personalData, ContactData contactData, FinanceData financeData, int yearsSinceFounded, List<FamilyMember> familyMembers) {
+        super(personalData, contactData, financeData, familyMembers);
         this.nip = nip;
         this.regon = regon;
         this.yearsSinceFounded = yearsSinceFounded;
@@ -23,6 +25,7 @@ public class SelfEmployed extends Person{
         private ContactData contactData;
         private FinanceData financeData;
         private int yearsSinceFounded;
+        private List<FamilyMember> familyMembers;
 
         private Builder(){}
 
@@ -31,7 +34,7 @@ public class SelfEmployed extends Person{
         }
 
         public SelfEmployed build(){
-            return new SelfEmployed(nip, regon, personalData, contactData, financeData, yearsSinceFounded);
+            return new SelfEmployed(nip, regon, personalData, contactData, financeData, yearsSinceFounded, familyMembers);
         }
 
         public Builder withNip(String nip){
@@ -64,5 +67,9 @@ public class SelfEmployed extends Person{
             return this;
         }
 
+        public Builder withFamiliMembers(List<FamilyMember> familyMembers) {
+            this.familyMembers = familyMembers;
+            return this;
+        }
     }
 }

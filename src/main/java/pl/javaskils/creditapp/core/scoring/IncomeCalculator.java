@@ -9,7 +9,7 @@ public class IncomeCalculator implements PersonCalculator{
     private static final Logger LOG = LoggerFactory.getLogger(IncomeCalculator.class);
     @Override
     public int calculate(Person person){
-        double incomPerFamilyMember = person.sumOfIncome() / person.getPersonalData().getNumOfFamilyDependants();
+        double incomPerFamilyMember = person.sumOfIncome() / person.getNumOfFamilyDependants();
         int pointsOfIncome = (int) ( incomPerFamilyMember / 1000) * 100;
 
         String points = pointsOfIncome > 0 ? "(+" + pointsOfIncome + " points)" : "(" + pointsOfIncome + " points)";
