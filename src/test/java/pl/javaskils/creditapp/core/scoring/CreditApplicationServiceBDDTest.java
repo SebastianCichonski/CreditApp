@@ -20,29 +20,17 @@ public class CreditApplicationServiceBDDTest {
     private MartialCalculator martialCalculator = new MartialCalculator();
     private IncomeCalculator incomeCalculator = new IncomeCalculator();
     private SourceOfIncomeCalculator sourceOfIncomeCalculator = new SourceOfIncomeCalculator();
+    private GuarantorsCalculator guarantorsCalculator = new GuarantorsCalculator();
     private CreditApplicationValidator creditApplicationValidator = new CreditApplicationValidator(new PersonValidator(new PersonalDataValidator()),new PurposeOfLoanValidator());
     private SelfEmployedScoringCalculator selfEmployedScoringCalculator =
             new SelfEmployedScoringCalculator();
     private PersonScoringCalculatorFactory calculator =
-            new PersonScoringCalculatorFactory(selfEmployedScoringCalculator,educationCalculator,martialCalculator,incomeCalculator,sourceOfIncomeCalculator);
+            new PersonScoringCalculatorFactory(selfEmployedScoringCalculator,educationCalculator,martialCalculator,incomeCalculator,sourceOfIncomeCalculator,guarantorsCalculator);
 
     private CreditApplicationService cut = new CreditApplicationService(calculator, creditApplicationValidator);
 
     @Test
     public void test_scoring_calculator_test_NEGATIVE_SCORING(){
-        //given
-        CreditApplication creditApplication = CreditApplicationTestFactory.create();
-
-        //when
-        CreditApplicationDecision decision = cut.getDecision(creditApplication);
-
-        //then
-        assertEquals(DecisionType.NEGATIVE_REQUIREMENTS_NOT_MET, decision.getDecisionType());
-        assertEquals(600, decision.getScoring());
-        assertEquals(360000.00, decision.getCreditRate(), 0.01);
-    }
-    @Test
-    public void test_scoring_calculator_test_when_years_since_founded_less_2_NEGATIVE_SCORING() {
         //given
         CreditApplication creditApplication = CreditApplicationTestFactory.create(1, 500_000.00,
                 PurposeOfLoanType.MORTGAGE, (byte) 30, 2, Education.MIDDLE, MartialStatus.MARRIED, 7_000.00);
@@ -53,6 +41,20 @@ public class CreditApplicationServiceBDDTest {
         //then
         assertEquals(DecisionType.NEGATIVE_SCORING, decision.getDecisionType());
         assertEquals(200, decision.getScoring());
+        //assertEquals(360000.00, decision.getCreditRate(), 0.01);
+    }
+    @Test
+    public void test_scoring_calculator_test_when_years_since_founded_less_2_NEGATIVE_SCORING() {
+        //given
+        CreditApplication creditApplication = CreditApplicationTestFactory.create(3, 500_000.00,
+                PurposeOfLoanType.MORTGAGE, (byte) 30, 2, Education.MIDDLE, MartialStatus.MARRIED, 7_000.00);
+
+        //when
+        CreditApplicationDecision decision = cut.getDecision(creditApplication);
+
+        //then
+        assertEquals(DecisionType.CONTACT_REQUIRED, decision.getDecisionType());
+        assertEquals(400, decision.getScoring());
     }
 
     @Test
@@ -66,7 +68,7 @@ public class CreditApplicationServiceBDDTest {
 
         //then
         assertEquals(DecisionType.CONTACT_REQUIRED, decision.getDecisionType());
-        assertEquals(400, decision.getScoring());
+        assertEquals(300, decision.getScoring());
     }
 
     @Test

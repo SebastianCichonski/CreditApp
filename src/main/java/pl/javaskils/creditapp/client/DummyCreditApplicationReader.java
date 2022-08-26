@@ -37,10 +37,14 @@ public class DummyCreditApplicationReader implements CreditApplicationReader{
                         .build())
                 .withFinanceData(new FinanceData(new SourceOfIncome(IncomeType.SELF_EMPLOYMENT, 10000))).build();
         PurposeOfLoan purposeOfLoan = new PurposeOfLoan(PurposeOfLoanType.MORTGAGE,(double) 50000, (byte) 30);
-        CreditApplication creditApplication = new CreditApplication(person,purposeOfLoan);
+        CreditApplication creditApplication = CreditApplication.Buider
+                .create()
+                .withPerson(person)
+                .withPurposeOfLoan(purposeOfLoan)
+                .withGuarantors(null)
+                .build();
 
-        System.out.println(person.getFamilyMembersSortedByName());
-        System.out.println(person.getFamilyMembers());
+
         return creditApplication;
     }
 }

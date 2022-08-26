@@ -1,5 +1,6 @@
 package pl.javaskils.creditapp.core.scoring;
 
+import pl.javaskils.creditapp.core.model.CreditApplication;
 import pl.javaskils.creditapp.core.model.NaturalPerson;
 import pl.javaskils.creditapp.core.model.Person;
 import pl.javaskils.creditapp.core.model.SelfEmployed;
@@ -22,4 +23,5 @@ public interface PersonCalculator {
     default int calculate(NaturalPerson naturalPerson){
         return 0;
     }
+    default int calculate (CreditApplication creditApplication) {return 0;}
 }

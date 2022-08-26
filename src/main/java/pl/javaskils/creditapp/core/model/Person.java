@@ -26,9 +26,6 @@ public abstract class Person {
         return familyMembers;
     }
 
-    public int getNumFoDependants(){
-        return 1 + this.familyMembers.size();
-    }
 
     public List<FamilyMember> getFamilyMembersSortedByName(){
         List<FamilyMember> copy = new ArrayList<>(this.familyMembers);

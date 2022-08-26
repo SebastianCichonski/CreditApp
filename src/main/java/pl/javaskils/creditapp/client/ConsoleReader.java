@@ -83,8 +83,14 @@ public class ConsoleReader implements CreditApplicationReader{
 
         NaturalPerson person =  NaturalPerson.Builder.create().withPersonalData(pd).withContactData(cd).withFinanceData(fd).build();
         PurposeOfLoan purposeOfLoan = new PurposeOfLoan(purposeOfLoanType, amount, period);
+        CreditApplication creditApplication = CreditApplication.Buider
+                .create()
+                .withPerson(person)
+                .withPurposeOfLoan(purposeOfLoan)
+                .withGuarantors(null)
+                .build();
 
-        return new CreditApplication(person, purposeOfLoan);
+        return creditApplication;
     }
 
     private byte getPeriod(Scanner in) {
