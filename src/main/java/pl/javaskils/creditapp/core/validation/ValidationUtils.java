@@ -2,10 +2,18 @@ package pl.javaskils.creditapp.core.validation;
 
 import pl.javaskils.creditapp.core.exception.*;
 
+import java.lang.reflect.Field;
+
 public class ValidationUtils {
     public static void validateNotNull(String field, Object object) throws ValidationException{
         if(object == null){
             throw new NotNullException(field);
+        }
+    }
+
+    public static void validatePesel(String field, String pesel, String regex)throws RegexException{
+        if(!pesel.matches(regex)){
+            throw new RegexException(field);
         }
     }
 

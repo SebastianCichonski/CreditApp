@@ -5,10 +5,7 @@ import pl.javaskils.creditapp.core.CreditApplicationDecision;
 import pl.javaskils.creditapp.core.CreditApplicationService;
 import pl.javaskils.creditapp.core.DecisionType;
 import pl.javaskils.creditapp.core.model.*;
-import pl.javaskils.creditapp.core.validation.CreditApplicationValidator;
-import pl.javaskils.creditapp.core.validation.PersonValidator;
-import pl.javaskils.creditapp.core.validation.PersonalDataValidator;
-import pl.javaskils.creditapp.core.validation.PurposeOfLoanValidator;
+import pl.javaskils.creditapp.core.validation.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
@@ -21,7 +18,7 @@ public class CreditApplicationServiceBDDTest {
     private IncomeCalculator incomeCalculator = new IncomeCalculator();
     private SourceOfIncomeCalculator sourceOfIncomeCalculator = new SourceOfIncomeCalculator();
     private GuarantorsCalculator guarantorsCalculator = new GuarantorsCalculator();
-    private CreditApplicationValidator creditApplicationValidator = new CreditApplicationValidator(new PersonValidator(new PersonalDataValidator()),new PurposeOfLoanValidator());
+    private CreditApplicationValidator creditApplicationValidator = new CreditApplicationValidator(new PersonValidator(new PersonalDataValidator()),new PurposeOfLoanValidator(), new GuarantorValidator());
     private SelfEmployedScoringCalculator selfEmployedScoringCalculator =
             new SelfEmployedScoringCalculator();
     private PersonScoringCalculatorFactory calculator =

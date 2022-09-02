@@ -4,6 +4,7 @@ import pl.javaskils.creditapp.core.model.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.TreeSet;
 
 public class DummyCreditApplicationReader implements CreditApplicationReader{
     @Override
@@ -37,11 +38,17 @@ public class DummyCreditApplicationReader implements CreditApplicationReader{
                         .build())
                 .withFinanceData(new FinanceData(new SourceOfIncome(IncomeType.SELF_EMPLOYMENT, 10000))).build();
         PurposeOfLoan purposeOfLoan = new PurposeOfLoan(PurposeOfLoanType.MORTGAGE,(double) 50000, (byte) 30);
+
+        TreeSet<Guarantor> guarantors = new TreeSet<>();
+        guarantors.add(new Guarantor("80011915096", 42));
+        guarantors.add(new Guarantor("82050714908", 38));
+        guarantors.add(new Guarantor("81011915096", 40));
+        guarantors.add(new Guarantor("21210802635", 20));
         CreditApplication creditApplication = CreditApplication.Buider
                 .create()
                 .withPerson(person)
                 .withPurposeOfLoan(purposeOfLoan)
-                .withGuarantors(null)
+                .withGuarantors(guarantors)
                 .build();
 
 

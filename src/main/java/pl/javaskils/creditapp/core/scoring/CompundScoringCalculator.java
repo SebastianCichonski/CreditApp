@@ -2,6 +2,7 @@ package pl.javaskils.creditapp.core.scoring;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.javaskils.creditapp.core.model.CreditApplication;
 import pl.javaskils.creditapp.core.model.Person;
 
 public class CompundScoringCalculator implements PersonCalculator{
@@ -13,10 +14,10 @@ public class CompundScoringCalculator implements PersonCalculator{
     }
 
     @Override
-    public int calculate(Person person){
+    public int calculate(CreditApplication creditApplication){
         int scoring = 0;
         for(PersonCalculator calculator: calculators){
-            scoring += calculator.calculate(person);
+            scoring += calculator.calculate(creditApplication);
         }
         LOG.info("Calculated scoring: " + scoring);
         return scoring;

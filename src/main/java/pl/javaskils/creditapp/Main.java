@@ -8,10 +8,7 @@ import pl.javaskils.creditapp.core.CreditApplicationManager;
 import pl.javaskils.creditapp.core.CreditApplicationService;
 import pl.javaskils.creditapp.core.model.CreditApplication;
 import pl.javaskils.creditapp.core.scoring.*;
-import pl.javaskils.creditapp.core.validation.CreditApplicationValidator;
-import pl.javaskils.creditapp.core.validation.PersonValidator;
-import pl.javaskils.creditapp.core.validation.PersonalDataValidator;
-import pl.javaskils.creditapp.core.validation.PurposeOfLoanValidator;
+import pl.javaskils.creditapp.core.validation.*;
 
 public class Main {
     public static void main(String[] args){
@@ -21,7 +18,7 @@ public class Main {
         IncomeCalculator incomeCalculator = new IncomeCalculator();
         SourceOfIncomeCalculator sourceOfIncomeCalculator = new SourceOfIncomeCalculator();
         GuarantorsCalculator guarantorsCalculator = new GuarantorsCalculator();
-        CreditApplicationValidator creditApplicationValidator = new CreditApplicationValidator(new PersonValidator(new PersonalDataValidator()),new PurposeOfLoanValidator());
+        CreditApplicationValidator creditApplicationValidator = new CreditApplicationValidator(new PersonValidator(new PersonalDataValidator()),new PurposeOfLoanValidator(), new GuarantorValidator());
         SelfEmployedScoringCalculator selfEmployedScoringCalculator =
                 new SelfEmployedScoringCalculator();
         PersonScoringCalculatorFactory personScoringCalculatorFactory =

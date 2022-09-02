@@ -30,7 +30,7 @@ public class CreditApplicationService {
             creditApplicationValidator.validate(creditApplication);
             Person person = creditApplication.getPerson();
 
-            int scoring = personScoringCalculatorFactory.getCalculator(person).calculate(person);
+            int scoring = personScoringCalculatorFactory.getCalculator(person).calculate(creditApplication);
 
             double creditRating = CreditRatingCalculator.calculateCreditRating(creditApplication);
 

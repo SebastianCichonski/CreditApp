@@ -12,6 +12,7 @@ public interface Constants {
      String HOUSE_NUMBER_REGEX = "\\d+[A-z]?";
      String ZIP_CODE_REGEX = "\\d{2}-\\d{3}";
      String YES_NO_REGEX = "(yes|no|YES|NO)";
+     String PESEL_REGEX = "\\d{11}";
      double MIN_LOAN_AMOUNT_MORTGAGE = 100000.00;
 
 }

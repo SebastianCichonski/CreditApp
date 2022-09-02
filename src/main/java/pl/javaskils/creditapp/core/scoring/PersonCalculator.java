@@ -23,5 +23,5 @@ public interface PersonCalculator {
     default int calculate(NaturalPerson naturalPerson){
         return 0;
     }
-    default int calculate (CreditApplication creditApplication) {return 0;}
+    default int calculate (CreditApplication creditApplication) {return calculate(creditApplication.getPerson());}
 }
